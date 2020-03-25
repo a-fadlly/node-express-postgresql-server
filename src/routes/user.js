@@ -22,7 +22,6 @@ router.post('/', async (req, res) => {
   const user = await User.create({
     username: req.body.username
   });
-
   return res.status(status.CREATED).json(new ResponseBuilder().setData(user).build());
 });
 
@@ -30,7 +29,6 @@ router.delete('/', async (req, res) => {
   const user = await User.destroy({
     where: { username: req.query.username },
   });
-
   return res.status(status.OK).json(new ResponseBuilder().setData(user).build());
 });
 
