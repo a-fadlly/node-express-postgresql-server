@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import status from 'http-status';
 import { ResponseBuilder } from '../helpers';
 import models from '../models';
 const { User } = models;
@@ -7,14 +8,14 @@ const router = Router();
 
 router.get('/', async (req, res) => {
   const users = await User.findAll();
-  return res.json(new ResponseBuilder().setData(users).build());
+  return res.status(status.OK).json(new ResponseBuilder().setData(users).build());
 });
 
 router.get('/:userId', async (req, res) => {
   const user = await User.findByPk(
     req.params.userId,
   );
-  return res.send(user);
+  return res.status(status.OK).json(new ResponseBuilder().setData(user).build());
 });
 
 router.post('/', async (req, res) => {
@@ -22,7 +23,15 @@ router.post('/', async (req, res) => {
     username: req.body.username
   });
 
-  return res.send(user);
+  return res.status(status.CREATED).json(new ResponseBuilder().setData(user).build());
+});
+
+router.delete('/', async (req, res) => {
+  const user = await User.destroy({
+    where: { username: req.query.username },
+  });
+
+  return res.status(status.OK).json(new ResponseBuilder().setData(user).build());
 });
 
 export default router;
