@@ -17,7 +17,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
 
-app.use('/session', routes.session);
 app.use('/users', routes.user);
 app.use('/messages', routes.message);
 
