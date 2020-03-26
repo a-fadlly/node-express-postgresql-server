@@ -17,15 +17,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
 
+app.use('/priorities', routes.priority);
+app.use('/statuses', routes.status);
+app.use('/tickets', routes.ticket);
+app.use('/type', routes.type);
 app.use('/users', routes.user);
 
 // Start
 
-sequelize.sync({ force: false }).then(async () => {
+sequelize.sync({ force: true }).then(async () => {
 
   app.listen(process.env.PORT, () =>
     console.log(`Example app listening on port ${process.env.PORT}!`),
   );
 });
-
-//test push

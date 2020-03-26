@@ -11,6 +11,10 @@ const sequelize = new Sequelize(
 
 const models = {
   User: sequelize.import('./user'),
+  Ticket: sequelize.import('./ticket'),
+  Status: sequelize.import('./status'),
+  Priority: sequelize.import('./priority'),
+  Type: sequelize.import('./type'),
 };
 
 Object.keys(models).forEach(key => {
