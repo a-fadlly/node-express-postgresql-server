@@ -10,11 +10,11 @@ const sequelize = new Sequelize(
 );
 
 const models = {
-  User: sequelize.import('./user'),
-  Ticket: sequelize.import('./ticket'),
-  Status: sequelize.import('./status'),
-  Priority: sequelize.import('./priority'),
-  Type: sequelize.import('./type'),
+  User: sequelize.import('./user.model'),
+  Ticket: sequelize.import('./ticket.model'),
+  Status: sequelize.import('./status.model'),
+  Priority: sequelize.import('./priority.model'),
+  Type: sequelize.import('./type.model'),
 };
 
 Object.keys(models).forEach(key => {

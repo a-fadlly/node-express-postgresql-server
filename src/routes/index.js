@@ -1,7 +1,7 @@
-import priority from './priority';
-import status from './status';
-import type from './type';
-import user from './user';
+import priority from './priority.routes';
+import status from './status.routes';
+import type from './type.routes';
+import user from './user.routes';
 
 export default {
   priority,
