@@ -27,3 +27,5 @@ sequelize.sync({ force: false }).then(async () => {
     console.log(`Example app listening on port ${process.env.PORT}!`),
   );
 });
+
+//test push
