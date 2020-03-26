@@ -19,7 +19,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/priorities', routes.priority);
 app.use('/statuses', routes.status);
-app.use('/tickets', routes.ticket);
 app.use('/type', routes.type);
 app.use('/users', routes.user);
 
