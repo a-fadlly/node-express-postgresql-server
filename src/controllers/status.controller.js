@@ -13,7 +13,7 @@ export default class StatusController {
     async post(req, res) {
         const { name } = req.body;
         const status = await Status.create({
-            name
+            name,
         });
         return res.status(HTTPStatus.CREATED).json(new ResponseBuilder().setData(status).build());
     }
@@ -21,7 +21,7 @@ export default class StatusController {
     async delete(req, res) {
         const { name } = req.query;
         const status = await Status.destroy({
-            where: { name },
+            where: { name, },
         });
         return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData(status).build());
     }

@@ -13,7 +13,7 @@ export default class PriorityController {
     async post(req, res) {
         const { name } = req.body;
         const priority = await Priority.create({
-            name
+            name,
         });
         return res.status(HTTPStatus.CREATED).json(new ResponseBuilder().setData(priority).build());
     }

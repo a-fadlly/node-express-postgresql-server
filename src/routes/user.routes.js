@@ -1,47 +1,23 @@
 import { Router } from 'express';
-import HTTPStatus from 'http-status';
-import { ResponseBuilder } from '../helpers';
-import models from '../models';
-const { User } = models;
+
+import { userController } from '../controllers';
 
 const router = Router();
 
 router.get('/', async (req, res) => {
-
-  const users = await User.findAll();
-
-  return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData(users).build());
+  userController.get(req, res);
 });
 
 router.get('/:userId', async (req, res) => {
-
-  const user = await User.findByPk(
-    req.params.userId,
-  );
-
-  return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData(user).build());
+  userController.find(req, res);
 });
 
 router.post('/', async (req, res) => {
-
-  const { username } = req.body;
-
-  const user = await User.create({
-    username,
-  });
-
-  return res.status(HTTPStatus.CREATED).json(new ResponseBuilder().setData(user).build());
+  userController.post(req, res);
 });
 
 router.delete('/', async (req, res) => {
-
-  const { username } = req.query;
-
-  const user = await User.destroy({
-    where: { username },
-  });
-
-  return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData(user).build());
+  userController.delete(req, res);
 });
 
 export default router;
