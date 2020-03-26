@@ -20,9 +20,9 @@ export default class PriorityController {
 
     async delete(req, res) {
         const { name } = req.query;
-        const priority = await Priority.destroy({
-            where: { name },
+        await Priority.destroy({
+            where: { name, },
         });
-        return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData(priority).build());
+        return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData({}).build());
     }
 }

@@ -12,7 +12,9 @@ export default class UserController {
 
     async find(req, res) {
         const { id } = req.params;
-        const user = await User.findOne({ where: { id } });
+        const user = await User.findOne({ 
+            where: { id, }, 
+        });
         return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData(user).build());
     }
 
@@ -26,9 +28,9 @@ export default class UserController {
 
     async delete(req, res) {
         const { username } = req.query;
-        const user = await User.destroy({
-            where: { username },
+        await User.destroy({
+            where: { username, },
         });
-        return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData(user).build());
+        return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData({}).build());
     }
 }

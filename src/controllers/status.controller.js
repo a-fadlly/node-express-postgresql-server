@@ -20,9 +20,9 @@ export default class StatusController {
 
     async delete(req, res) {
         const { name } = req.query;
-        const status = await Status.destroy({
+        await Status.destroy({
             where: { name, },
         });
-        return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData(status).build());
+        return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData({}).build());
     }
 }

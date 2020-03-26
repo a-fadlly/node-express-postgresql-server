@@ -20,9 +20,9 @@ export default class TypeController {
 
     async delete(req, res) {
         const { name } = req.query;
-        const type = await Type.destroy({
+        await Type.destroy({
             where: { name, },
         });
-        return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData(type).build());
+        return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData({}).build());
     }
 }
