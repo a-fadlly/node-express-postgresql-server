@@ -17,6 +17,12 @@ const ticket = (sequelize, DataTypes) => {
         },
     });
 
+    Ticket.associate = function (models) {
+        Ticket.belongsTo(models.Priority, { foreignKey: 'priority_id' });
+        Ticket.belongsTo(models.Status, { foreignKey: 'status_id' });
+        Ticket.belongsTo(models.Type, { foreignKey: 'type_id' });
+    };
+
     return Ticket;
 };
 

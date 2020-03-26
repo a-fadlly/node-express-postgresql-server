@@ -21,6 +21,8 @@ app.use('/priorities', routes.priority);
 app.use('/statuses', routes.status);
 app.use('/types', routes.type);
 app.use('/users', routes.user);
+//test
+app.use('/tickets', routes.ticket);
 
 // Start
 
