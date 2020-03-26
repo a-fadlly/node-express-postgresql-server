@@ -6,7 +6,6 @@ import user from './user';
 export default {
   priority,
   status,
-  ticket,
   type,
   user,
 };
