@@ -11,9 +11,8 @@ export default class UserController {
     }
 
     async find(req, res) {
-        const user = await User.findByPk(
-            req.params.userId,
-        );
+        const { id } = req.params;
+        const user = await User.findOne({ where: { id } });
         return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData(user).build());
     }
 

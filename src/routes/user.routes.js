@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
   userController.get(req, res);
 });
 
-router.get('/:userId', async (req, res) => {
+router.get('/:id', async (req, res) => {
   userController.find(req, res);
 });
 
