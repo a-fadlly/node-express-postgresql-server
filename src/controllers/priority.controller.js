@@ -7,7 +7,11 @@ export default class PriorityController {
 
     async get(req, res) {
         const priorities = await Priority.findAll();
-        return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData(priorities).build());
+        return res.status(HTTPStatus.OK).json(
+            new ResponseBuilder()
+                .setData(priorities)
+                .build()
+        );
     }
 
     async post(req, res) {
@@ -15,7 +19,11 @@ export default class PriorityController {
         const priority = await Priority.create({
             name,
         });
-        return res.status(HTTPStatus.CREATED).json(new ResponseBuilder().setData(priority).build());
+        return res.status(HTTPStatus.CREATED).json(
+            new ResponseBuilder()
+                .setData(priority)
+                .build()
+        );
     }
 
     async delete(req, res) {
@@ -23,6 +31,10 @@ export default class PriorityController {
         await Priority.destroy({
             where: { name, },
         });
-        return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData({}).build());
+        return res.status(HTTPStatus.OK).json(
+            new ResponseBuilder()
+                .setData({})
+                .build()
+        );
     }
 }

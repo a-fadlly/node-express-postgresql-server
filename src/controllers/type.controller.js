@@ -7,7 +7,11 @@ export default class TypeController {
 
     async get(req, res) {
         const types = await Type.findAll();
-        return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData(types).build());
+        return res.status(HTTPStatus.OK).json(
+            new ResponseBuilder()
+                .setData(types)
+                .build()
+        );
     }
 
     async post(req, res) {
@@ -15,7 +19,11 @@ export default class TypeController {
         const type = await Type.create({
             name,
         });
-        return res.status(HTTPStatus.CREATED).json(new ResponseBuilder().setData(type).build());
+        return res.status(HTTPStatus.CREATED).json(
+            new ResponseBuilder()
+                .setData(type)
+                .build()
+        );
     }
 
     async delete(req, res) {
@@ -23,6 +31,10 @@ export default class TypeController {
         await Type.destroy({
             where: { name, },
         });
-        return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData({}).build());
+        return res.status(HTTPStatus.OK).json(
+            new ResponseBuilder()
+                .setData({})
+                .build()
+        );
     }
 }

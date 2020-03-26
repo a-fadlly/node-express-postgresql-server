@@ -7,7 +7,11 @@ export default class StatusController {
 
     async get(req, res) {
         const statuses = await Status.findAll();
-        return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData(statuses).build());
+        return res.status(HTTPStatus.OK).json(
+            new ResponseBuilder()
+                .setData(statuses)
+                .build()
+        );
     }
 
     async post(req, res) {
@@ -15,7 +19,11 @@ export default class StatusController {
         const status = await Status.create({
             name,
         });
-        return res.status(HTTPStatus.CREATED).json(new ResponseBuilder().setData(status).build());
+        return res.status(HTTPStatus.CREATED).json(
+            new ResponseBuilder()
+                .setData(status)
+                .build()
+        );
     }
 
     async delete(req, res) {
@@ -23,6 +31,10 @@ export default class StatusController {
         await Status.destroy({
             where: { name, },
         });
-        return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData({}).build());
+        return res.status(HTTPStatus.OK).json(
+            new ResponseBuilder()
+                .setData({})
+                .build()
+        );
     }
 }
