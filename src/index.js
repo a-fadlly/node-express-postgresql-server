@@ -19,12 +19,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/priorities', routes.priority);
 app.use('/statuses', routes.status);
-app.use('/type', routes.type);
+app.use('/types', routes.type);
 app.use('/users', routes.user);
 
 // Start
 
-sequelize.sync({ force: true }).then(async () => {
+sequelize.sync({ force: false }).then(async () => {
 
   app.listen(process.env.PORT, () =>
     console.log(`Example app listening on port ${process.env.PORT}!`),

@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 
   const statuses = await Status.findAll();
 
-  return res.HTTPStatus(HTTPStatus.OK).json(new ResponseBuilder().setData(statuses).build());
+  return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData(statuses).build());
 });
 
 router.post('/', async (req, res) => {
@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
     name
   });
 
-  return res.HTTPStatus(HTTPStatus.CREATED).json(new ResponseBuilder().setData(status).build());
+  return res.status(HTTPStatus.CREATED).json(new ResponseBuilder().setData(status).build());
 });
 
 router.delete('/', async (req, res) => {
@@ -32,7 +32,7 @@ router.delete('/', async (req, res) => {
     where: { name },
   });
   
-  return res.HTTPStatus(HTTPStatus.OK).json(new ResponseBuilder().setData(status).build());
+  return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData(status).build());
 });
 
 export default router;

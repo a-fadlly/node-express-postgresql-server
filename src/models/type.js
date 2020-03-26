@@ -6,7 +6,7 @@ const type = (sequelize, DataTypes) => {
     });
 
     Type.associate = models => {
-        Type.hasMany(models.Ticket, { foreignKey: 'type_id', });
+        Type.hasMany(models.Ticket, { foreignKey: 'type_id', onDelete: 'CASCADE' });
     };
 
     return Type;

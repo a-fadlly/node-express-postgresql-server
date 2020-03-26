@@ -6,7 +6,7 @@ const status = (sequelize, DataTypes) => {
     });
 
     Status.associate = models => {
-        Status.hasMany(models.Ticket, { foreignKey: 'status_id', });
+        Status.hasMany(models.Ticket, { foreignKey: 'status_id', onDelete: 'CASCADE' });
     };
 
     return Status;

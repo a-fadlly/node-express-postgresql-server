@@ -6,7 +6,7 @@ const priority = (sequelize, DataTypes) => {
     });
 
     Priority.associate = models => {
-        Priority.hasMany(models.Ticket, { foreignKey: 'priority_id', });
+        Priority.hasMany(models.Ticket, { foreignKey: 'priority_id', onDelete: 'CASCADE' });
     };
 
     return Priority;

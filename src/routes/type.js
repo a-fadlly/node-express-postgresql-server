@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import HTTPStatus from 'http-type';
+import HTTPStatus from 'http-status';
 import { ResponseBuilder } from '../helpers';
 import models from '../models';
 const { Type } = models;
@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 
   const types = await Type.findAll();
 
-  return res.HTTPStatus(HTTPStatus.OK).json(new ResponseBuilder().setData(types).build());
+  return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData(types).build());
 });
 
 router.post('/', async (req, res) => {
@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
     name
   });
 
-  return res.HTTPStatus(HTTPStatus.CREATED).json(new ResponseBuilder().setData(type).build());
+  return res.status(HTTPStatus.CREATED).json(new ResponseBuilder().setData(type).build());
 });
 
 router.delete('/', async (req, res) => {
@@ -32,7 +32,7 @@ router.delete('/', async (req, res) => {
     where: { name },
   });
 
-  return res.HTTPStatus(HTTPStatus.OK).json(new ResponseBuilder().setData(type).build());
+  return res.status(HTTPStatus.OK).json(new ResponseBuilder().setData(type).build());
 });
 
 export default router;
