@@ -6,47 +6,83 @@ const { User } = models;
 export default class UserController {
 
     async get(req, res) {
-        const users = await User.findAll();
-        return res.status(HTTPStatus.OK).json(
-            new ResponseBuilder()
-                .setData(users)
-                .build()
-        );
+        try {
+            const users = await User.findAll();
+            return res.status(HTTPStatus.OK).json(
+                new ResponseBuilder()
+                    .setData(users)
+                    .build()
+            );
+        } catch (error) {
+            res.status(HTTPStatus.BAD_REQUEST).json(
+                new ResponseBuilder()
+                    .setMessage(error)
+                    .setSuccess(false)
+                    .build()
+            );
+        }
     }
 
     async find(req, res) {
-        const { id } = req.params;
-        const user = await User.findOne({
-            where: { id, },
-        });
-        return res.status(HTTPStatus.OK).json(
-            new ResponseBuilder()
-                .setData(user)
-                .build()
-        );
+        try {
+            const { id } = req.params;
+            const user = await User.findOne({
+                where: { id, },
+            });
+            return res.status(HTTPStatus.OK).json(
+                new ResponseBuilder()
+                    .setData(user)
+                    .build()
+            );
+        } catch (error) {
+            res.status(HTTPStatus.BAD_REQUEST).json(
+                new ResponseBuilder()
+                    .setMessage(error)
+                    .setSuccess(false)
+                    .build()
+            );
+        }
     }
 
     async post(req, res) {
-        const { username } = req.body;
-        const user = await User.create({
-            username,
-        });
-        return res.status(HTTPStatus.CREATED).json(
-            new ResponseBuilder()
-                .setData(user)
-                .build()
-        );
+        try {
+            const { username } = req.body;
+            const user = await User.create({
+                username,
+            });
+            return res.status(HTTPStatus.CREATED).json(
+                new ResponseBuilder()
+                    .setData(user)
+                    .build()
+            );
+        } catch (error) {
+            res.status(HTTPStatus.BAD_REQUEST).json(
+                new ResponseBuilder()
+                    .setMessage(error)
+                    .setSuccess(false)
+                    .build()
+            );
+        }
     }
 
     async delete(req, res) {
-        const { username } = req.query;
-        await User.destroy({
-            where: { username, },
-        });
-        return res.status(HTTPStatus.OK).json(
-            new ResponseBuilder()
-                .setData({})
-                .build()
-        );
+        try {
+            const { username } = req.query;
+            await User.destroy({
+                where: { username, },
+            });
+            return res.status(HTTPStatus.OK).json(
+                new ResponseBuilder()
+                    .setData({})
+                    .build()
+            );
+        } catch (error) {
+            res.status(HTTPStatus.BAD_REQUEST).json(
+                new ResponseBuilder()
+                    .setMessage(error)
+                    .setSuccess(false)
+                    .build()
+            );
+        }
     }
 }
